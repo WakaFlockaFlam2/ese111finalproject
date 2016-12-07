@@ -5,7 +5,7 @@ import numpy as np
 from matplotlib import pyplot as plt
 
 img = cv2.imread('dave.jpg',0)
-img = cv2.medianBlur(img,5)
+img = cv2.medianBlur(img,15)
 ret,th1 = cv2.threshold(img,127,255,cv2.THRESH_BINARY)
 nonzero = cv2.countNonZero(ret)
 height, width = img.shape
