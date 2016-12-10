@@ -4,8 +4,11 @@
 import cv2
 import numpy as np;
 import os
+import datetime
+i = datetime.datetime.now()
 # Read image
-im = cv2.imread("blob.jpg", cv2.IMREAD_GRAYSCALE)
+img_str = "training_imgs/w5.jpg"
+im = cv2.imread(img_str, cv2.IMREAD_GRAYSCALE)
 im = cv2.medianBlur(im,15)
 
 # Setup SimpleBlobDetector parameters.
@@ -26,7 +29,7 @@ params.minCircularity = 0.1
 
 # Filter by Convexity
 params.filterByConvexity = True
-params.minConvexity = 0.87
+params.minConvexity = 0.01
     
 # Filter by Inertia
 params.filterByInertia = True
@@ -51,4 +54,5 @@ cv2.waitKey(0)
 numBugs = len(keypoints)
 print numBugs
 
-os.system("ssh -i idamRevOne.pem ec2-user@ec2-54-144-59-153.compute-1.amazonaws.com 'bash adder.sh DEC152016 "+str(numBugs)+"'")
+os.system("ssh -i idamRevOne.pem ec2-user@ec2-54-144-59-153.compute-1.amazonaws.com 'bash adder.sh " +str(i.year) + "_"+str(i.month) + "_"+str(i.day) + "_" + str(i.hour) + "_" + str(i.minute)+ "_" + str(i.second)+" " +str(numBugs)+"'")
+os.system("scp -i idamRevOne.pem "+ img_str +" ec2-user@ec2-54-144-59-153.compute-1.amazonaws.com:/var/www/html/images/"+str(i.year) + "_"+str(i.month) + "_"+str(i.day) + "_" + str(i.hour) + "_" + str(i.minute)+ "_" + str(i.second)+".jpg")
