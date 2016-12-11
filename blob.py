@@ -5,9 +5,11 @@ import cv2
 import numpy as np;
 import os
 import datetime
+import sys
 i = datetime.datetime.now()
 # Read image
-img_str = "training_imgs/w5.jpg"
+
+img_str = sys.argv[1]
 im = cv2.imread(img_str, cv2.IMREAD_GRAYSCALE)
 im = cv2.medianBlur(im,15)
 
