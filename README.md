@@ -1,6 +1,6 @@
 # idam-Automating-Pest-Management
 
-Developed and maintained by Jacob Beckerman.
+Developed and maintained by Jacob Beckerman.<b> All Rights Reserved.</b>
 
 <big><b>idam: Automating Integrated Pest Management</b></big>
 
